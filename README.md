@@ -1,39 +1,50 @@
-#Patchy
+#Simply
 
 ## Intro
 
-Patchy uses Google's DiffMatchPatch code to provide two basic, easy to use methods:
+A friendly API to interact with AWS SimpleDB for aws2js. 
 
 ### The Code
 
 To install
 
-	npm install patchy
-	cd node_modules/patchy
+	npm install simply-wrapper
+	// then satisfy the dependencies...
+	cd node_modules/simply-wrapper
 	npm install
 
 To use
 
-	// get a patchy object
-	var patchy = require('patchy');
+	// get a simply object..
+	var simply = require('simply')(key, secret, region);
 
-	// make a patch: makePatch( original_string, new_string ); 
-	patchy.makePatch('', 'Hello world'); // returns '@@ -0,0 +1,11 @@\n+Hello world\n'
 
-	// apply a patch: applyPatch( original_string, patch_string );
-	patchy.applyPatch('', '@@ -0,0 +1,11 @@\n+Hello world\n'); // returns 'Hello world'
+	// Create a domain: domain = string
+	simply.createDomain( domain, callback ) // callback is passed err and result. Result is 'ok' if okay.
 
-	// apply an array of patches: applyPatch(original_string, array_of_patch_strings );
-	patchy.applyPatch('', [
-		'@@ -0,0 +1,11 @@\n+Hello world\n',
-		'@@ -1,9 +1,17 @@\n-Hello\n+Goodbye cruel\n  wor\n',
-		'@@ -12,8 +12,24 @@\n el world\n+, we\'ll miss you\n'
-	]);
-	// returns "Goodbye cruel world, we'll miss you"
+	// Delete a domain: domain = string
+	simply.deleteDomain( domain , callback ) // callback is passed err and result. Result is 'ok' if okay.
+
+	// List domains
+	simply.deleteDomain( callback ) // callback is passed err and result. Result is ['domain1', 'domain2'] if okay.
+
+	// Put an item: ItemName = string, unique identifier, domain = string, data = { Key : 'Value' }
+	simply.putItem(ItemName, domain, data, callback ) // callback is passed err and result. Result is 'ok' if okay.
+
+	// Get an item: ItemName = unique string identifier, domain = string, 
+	simply.getItem(ItemName, domain, callback) // callback passed err and result. Result is { 'TheItemName' : { Key : 'Value', ... } } if okay
+
+	// Delete an item: ItemName = unique string identifier, domain = string
+	simply.deleteItem(ItemName, domain, callback ) // callback is passed err and result. Result is 'ok' if okay.
+
+	// Run a select query
+	simply.select('select * from `my-domain`', callback) // { 'ItemName' : { Attributes }, 'FirstItemName' : { Attributes }, ... }
 
 ### Run the tests
 
-You need mocha and should.js. Google's DiffMatchPatch is extensively unit-tested so these tests merely
-confirm that patchy isn't adding or removing anything
+To run the tests you need Mocha and Should.js. You should also put your AWS key, secret, chosen region and 
+a safe test domain to use in common.js by editing common.EDIT_ME.js and renaming it to 'common.js'
+
+Then: 
 
 	make test
