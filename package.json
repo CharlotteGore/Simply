@@ -1,0 +1,50 @@
+{
+  "name": "simply-wrapper",
+  "description": "A friendly API to deal with SimpleDB using aws2js",
+  "keywords": [
+    "amazon",
+    "simpleDB",
+    "aws2js",
+    "sdb",
+    "aws",
+    "api"
+  ],
+  "version": "0.0.1",
+  "homepage": "https://CharlotteGore@github.com/CharlotteGore/Simply.git",
+  "author": {
+    "name": "Charlotte Gore",
+    "email": "conspiracygore@gmail.com",
+    "url": "http://charlottegore.com/"
+  },
+  "contributors": [
+    {
+      "name": "Charlotte Gore",
+      "email": "conspiracygore@gmail.com",
+      "url": "http://charlottegore.com/"
+    }
+  ],
+  "dependencies": {
+    "base-framework": "1.0.x",
+    "underscore" : "1.3.x",
+    "aws2js" : "x.x.x"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "main": "lib/simply",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/CharlotteGore/Simply.git"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "_npmUser": {
+    "name": "CharlotteGore",
+    "email": "conspiracygore@gmail.com"
+  }
+}
