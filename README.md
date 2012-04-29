@@ -16,7 +16,7 @@ To install
 To use
 
 	// get a simply object..
-	var simply = require('simply')(key, secret, region);
+	var simply = require('simply-wrapper')(key, secret, region);
 
 
 	// Create a domain: domain = string
